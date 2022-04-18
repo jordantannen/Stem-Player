@@ -1,15 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stem Player</title>
-</head>
-<body>
+{% extends "layout.html" %}
+
+{% block head %}
+<title>Stem Player Home</title>
+{% endblock %}
+
+{% block body %}
     <form action="/" method="post" enctype="multipart/form-data">
-        <input type="file" name="file" id="file">
-        <button type="submit">Submit</button>
+        <label for="file" class="form-label"><h4>Input MP3 or WAV File</h4></label>
+        <div class="mb-3 d-flex justify-content-center">
+            <input class="form-control w-50" type="file" name="file" id="file">
+        </div>
+        <button class="btn btn-primary" type="submit">Submit</button>
     </form>
-</body>
-</html>
+{% endblock %}

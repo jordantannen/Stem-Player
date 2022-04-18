@@ -1,37 +1,63 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stem Player</title>
-</head>
-<body>
-    <h1>WIP</h1>
+{% extends "layout.html" %}
 
-    {% for item in file_list %}
-    <audio class="myAudio" controls>
-        <source src="{{ url_for('send_file', filename=item) }}">
-    </audio>
+{% block head %}
+<title>Stem Player</title>
+{% endblock %}
 
-    {% endfor %}
-    <button onclick="playAudio()" type="button">Play Audio</button>
-    <button onclick="pauseAudio()" type="button">Pause Audio</button>
+{% block body %}
+    <h4>WIP - Use volume sliders for each stem</h4>
+    <div class="mb-3">
+        {% for item in file_list %}
+            {% set name = item.replace(".wav", "") %}
+            <div>{{ name }}</div>
+            <audio class="myAudio" controls>
+                <source src="{{ url_for('send_file', filename=item) }}">
+            </audio>
+        {% endfor %}
+    </div>
+
+    <div class="mb-3">
+    <!-- <button onclick="playAudio()" type="button">Play Audio</button>
+    <button onclick="pauseAudio()" type="button">Pause Audio</button> -->
+    <button id="vidbutton">Play</button> 
+    </div>
     
     <script>
         var stems = document.getElementsByClassName("myAudio");
-        function playAudio() {
-            for (let i = 0; i < stems.length; i++)
+        var playButton = document.getElementById("vidbutton");
+        playButton.addEventListener("click", playPause);
+        
+        function playPause(){
+            if (stems[0].paused)
             {
-                stems[i].play();
+                for (let i = 0; i < stems.length; i++)
+                {
+                     stems[i].play();
+                }
+                playButton.innerHTML = "Pause";
+            }
+            else
+            {
+                for (let i = 0; i < stems.length; i++)
+                {
+                     stems[i].pause();
+                }
+                playButton.innerHTML = "Play";
             }
         }
-        function pauseAudio() {
-            for (let i = 0; i < stems.length; i++)
-            {
-                stems[i].pause();
-            }
-        }
+
+
+        // function playAudio() {
+        //     for (let i = 0; i < stems.length; i++)
+        //     {
+        //         stems[i].play();
+        //     }
+        // }
+        // function pauseAudio() {
+        //     for (let i = 0; i < stems.length; i++)
+        //     {
+        //         stems[i].pause();
+        //     }
+        // }
     </script>
-</body>
-</html>
+{% endblock %}

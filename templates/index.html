@@ -10,6 +10,19 @@
         <div class="mb-3 d-flex justify-content-center">
             <input class="form-control w-50" type="file" name="file" id="file">
         </div>
-        <button class="btn btn-primary" type="submit">Submit</button>
+        <button class="btn btn-primary" type="submit" onclick="loadSpinner()">Submit</button>
     </form>
+    <br>
+    <div class="mb-3 d-flex justify-content-center">
+        <h2 class="me-2" id="loading" style="display:none">Loading Stems...</h2>
+        <div class="spinner-border text-primary" id="spinner" style="width: 3rem; height: 3rem; display:none" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+    <script>
+        function loadSpinner(){
+            document.getElementById("spinner").style.display = "block";
+            document.getElementById("loading").style.display = "block";
+        }
+    </script>
 {% endblock %}

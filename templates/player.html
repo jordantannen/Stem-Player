@@ -2,46 +2,28 @@
 
 {% block head %}
 <title>Stem Player</title>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+<meta http-equiv="Pragma" content="no-cache"/>
+<meta http-equiv="Expires" content="0"/>
 {% endblock %}
 
 {% block body %}
     <h4>WIP - Use volume sliders for each stem</h4>
+
     <div class="mb-3">
         {% for item in file_list %}
             {% set name = item.replace(".wav", "") %}
             <div>{{ name }}</div>
-            <audio class="myAudio" controls>
-                <source src="{{ url_for('send_file', filename=item) }}">
+            <audio class="myAudio">
+                <source src="{{ url_for('send_file', filename=item) }}" class="urls">
             </audio>
+            <input type="range" min="0" max="10" value="5" class="slider">
         {% endfor %}
     </div>
 
     <div class="mb-3">
-        <button class="btn btn-primary" id="vidbutton">Play</button> 
+        <button class="btn btn-primary" id="play-button">Play</button> 
     </div>
-    
-    <script>
-        var stems = document.getElementsByClassName("myAudio");
-        var playButton = document.getElementById("vidbutton");
-        playButton.addEventListener("click", playPause);
-        
-        function playPause(){
-            if (stems[0].paused)
-            {
-                for (let i = 0; i < stems.length; i++)
-                {
-                     stems[i].play();
-                }
-                playButton.innerHTML = "Pause";
-            }
-            else
-            {
-                for (let i = 0; i < stems.length; i++)
-                {
-                     stems[i].pause();
-                }
-                playButton.innerHTML = "Play";
-            }
-        }
-    </script>
+
+    <script src="static/scripts.js"></script>
 {% endblock %}

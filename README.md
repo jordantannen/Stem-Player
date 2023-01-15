@@ -1,7 +1,7 @@
 Overview
 ------------
 
-This is a digital MVP of the [Kanye West's $200 stem player](https://www.stemplayer.com/). The sten player is a physical product that allows users to play individual [stems](https://www.epidemicsound.com/blog/what-are-stems-in-music-production/) from a given song. I thought this was a fun concept, but not $200 fun, so I built my own.
+This is a digital MVP of the [$200 stem player](https://www.stemplayer.com/). The stem player is a physical product that allows users to play individual [stems](https://www.epidemicsound.com/blog/what-are-stems-in-music-production/) from a given song. I thought this was a fun concept, but not $200 fun, so I built my own.
 
 ### Technologies Used
 - Python
